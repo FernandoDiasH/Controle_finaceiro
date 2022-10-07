@@ -17,7 +17,7 @@ class LancamentoSeeder extends Seeder
     public function run()
     {
        Lancamento::create([
-            "usuario_id" => "1",
+            "user_id" => "1",
             "operacao_id" => "1",
             "dta_lancamento"=> '2022-10-14',
             "descricao" => fake()->company(),

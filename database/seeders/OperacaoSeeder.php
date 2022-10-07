@@ -16,14 +16,14 @@ class OperacaoSeeder extends Seeder
     public function run()
     {
         Operacao::create([
-            "usuario_id" => "1",
-            "descricao" => "Remuneração",
+            "user_id" => "1",
+            "categoria" => "Remuneração",
             "tipo" => "entrada",
 
         ]);
         Operacao::create([
-            "usuario_id" => "1",
-            "descricao" => "Conta fixa",
+            "user_id" => "1",
+            "categoria" => "Conta fixa",
             "tipo" => "saida",
 
         ]);

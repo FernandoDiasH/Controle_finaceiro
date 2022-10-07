@@ -16,7 +16,7 @@ class ConfigCartaoSeeder extends Seeder
     public function run()
     {
         ConfigCartao::create([
-            "usuario_id"=>'1',
+            "user_id"=>'1',
             "banco_id" => '1',
             "descricao" => 'Cartao de crédito',
             "dia_vencimento"=> '18',

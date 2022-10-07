@@ -17,7 +17,7 @@ class LancamentoCreditoFactory extends Factory
     public function definition()
     {
         return [
-            "usuario_id" => "1",
+            "user_id" => "1",
             "config_cartao_id" => "1",
             "dta_compra" => "2022-10-16",
             "descricao" => fake()->company(),

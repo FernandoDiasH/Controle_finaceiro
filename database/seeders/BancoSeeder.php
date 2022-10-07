@@ -16,7 +16,7 @@ class BancoSeeder extends Seeder
     public function run()
     {
         Banco::create([
-            "usuario_id"=>"1",
+            "user_id"=>"1",
             "nome_banco"=>'Itau',
         ]);
     }

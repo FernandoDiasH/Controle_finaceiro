@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('registro_parcelas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuario');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('lancamento_credito_id')->constrained('lancamento_credito');
             $table->date('dta_vencimento');
             $table->float('valor_parcela');

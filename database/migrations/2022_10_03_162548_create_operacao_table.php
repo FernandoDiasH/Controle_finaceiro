@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('operacao', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuario');
-            $table->string('descricao', 50);
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('categoria', 50);
             $table->string('tipo', 15);
             $table->timestamps();
         });

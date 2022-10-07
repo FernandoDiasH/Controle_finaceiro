@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('banco', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuario');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nome_banco', 50);
             $table->timestamps();
         });

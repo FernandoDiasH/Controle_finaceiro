@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Throwable;
 
 class ConfigCartao extends Model
 {
@@ -19,4 +20,21 @@ class ConfigCartao extends Model
         'dia_fechamento',
         'limite_cartao',
     ];
+
+    public function store($request){
+        try{
+            return $this->create($request);
+
+        }catch(Throwable){
+            return 'error';
+        }
+    }
+
+    public function usuario(){
+        return $this->belongsTo(usuario::class);
+    }
+
+    public function banco(){
+        return $this->belongsTo(Banco::class);
+    }
 }
