@@ -24,15 +24,15 @@ class Lancamento extends Model
     }
 
     public function getLancamentoID($id, $request){
-       return $this->where('id',$id)
-                    ->where('usuario_id', $request->usuario_id)
+       return $this->where('id', $id)
+                    ->where('user_id', $request->user_id)
                     ->get();
     }
 
     public function getLancamentos($request){
         $sql = $this->join('operacao', 'operacao_id', 'operacao.id')
                         ->select('*')
-                        ->where('lancamento.user_id', $request->usuario_id);
+                        ->where('lancamento.user_id', $request->user_id);
 
         if($request->descricao){
             $sql->where('descricao', 'LIKE', "%$request->descricao%");
@@ -58,7 +58,7 @@ class Lancamento extends Model
     }
 
     public function updateLancamento($request){
-        $sql = $this->where('usuario_id', $request->usuario_id)
+        $sql = $this->where('usuario_id', $request->user_id)
                     ->where('id', $request->id)
                     ->update($request->all());
 
@@ -75,8 +75,8 @@ class Lancamento extends Model
 
 
     //relacionamentos
-    public function usuario(){
-        return $this->belongsTo(Usuario::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function operacao(){

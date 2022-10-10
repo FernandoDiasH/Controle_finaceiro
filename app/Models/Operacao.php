@@ -30,7 +30,7 @@ class Operacao extends Model
     public function getOperacao($request){
 
         $sql = $this->select('*')
-                    ->where('usuario_id', $request->usuario_id);
+                    ->where('user_id', $request->user_id);
 
         if($request->categoria){
             $sql->where('categoria', 'like', "%$request->categoria%");
@@ -43,15 +43,15 @@ class Operacao extends Model
 
     }
 
-    public function getOperacaoID($request, $id){
+    public function getOperacaoID($id, $request){
         return $this->where('id', $id)
-                    ->where('usuario_id', $request->usuario_id)
+                    ->where('user_id', $request->user_id)
                     ->get();
     }
 
     public function updateOperacao($request){
 
-        return $this->where('usuario_id', $request->usuario_id)
+        return $this->where('user_id', $request->user_id)
                     ->where('id', $request->id)
                     ->update($request->all());
     }

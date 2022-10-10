@@ -11,35 +11,23 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
 
-    public function storeUser(LoginRequest $request, User $user){
-        $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
-        $user->sotoreUser($data);
-        return 'cadastrado com sucesso';
-    }
-
     public function login(Request $request){
         if(Auth::attempt($request->all())){
-            return 'logado';
+            $token = auth()->user()->createToken('auth_token');
+
+            return response()->json([
+                "token"=>$token->plainTextToken,
+                'user_id' => Auth::id()
+            ]);
         }else{
-            return 'erro';
+           abort(401, 'credenciais invalidas');
         }
     }
 
     public function logout(){
-        if(Auth::logout()){
-            return "certo";
-        }else{
-            return "deslogado";
-        }
-    }
+        //auth()->user()->currentAccessToken()->delete();
+        auth()->user()->tokens()->delete();
+        return 'deslogado';
 
-    public function teste(){
-        dd(Auth::id());
     }
-
-    public function rotas(){
-        return 'teste';
-    }
-
 }

@@ -9,17 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class OperacaoController extends Controller
 {
-    public function createOperacao (OperacaoRequest $request, Operacao $operacao ){
-        if(Auth::check()){
-            $data = $request->validated();
-            $data['user_id'] = Auth::id();
-            return $operacao->createOperacao($data);
-            
-        }else{
-            return 'Você nao esta logado';
-        }
+    public function store (OperacaoRequest $request, Operacao $operacao ){
 
+        $operacao->createOperacao($request->validated());
 
+        return response()->json([
+            'response'=>'cadastrado com sucesso'
+        ]);
     }
 
     public function getOperacao(Request $request, Operacao $operacao){
@@ -31,6 +27,6 @@ class OperacaoController extends Controller
     }
 
     public function getOperacaoID(Operacao $operacao, $id, Request $request){
-        return $operacao->getOperacaoID($request, $id);
+        return $operacao->getOperacaoID($id, $request);
     }
 }

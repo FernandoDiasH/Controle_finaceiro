@@ -17,12 +17,14 @@ class CheckAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        dd(auth('')->check());
-        if(auth()->check()){
+        if(auth()->user()->currentAccessToken()->tokenable_id == $request->user_id){
             return $next($request);
         }else{
-            return redirect()->route('welcome');
+            return response()->json([
+                'error'=>'esse usuario nao tem acesso a esse token'
+            ]);
         }
+
 
 
     }

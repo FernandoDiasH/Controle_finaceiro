@@ -24,7 +24,7 @@ class OperacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            "usuario_id"=> "required|numeric",
+            "user_id"=> "required|numeric",
             "categoria"=>"required|string|max:255",
             "tipo"=>"required|string|max:255"
         ];

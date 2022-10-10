@@ -12,14 +12,11 @@ use Throwable;
 class LancamentoController extends Controller
 {
     public function createLancamento(LancamentoRequest $request, Lancamento $lancamento){
-        if(Auth::check()){
-            $data = $request->validated();
-            $data['user_id'] = Auth::id();
-            $lancamento->createLancamento($data);
-            return 'teste';
-        }else{
-            return 'Você nao esta logado';
-        }
+
+        $lancamento->createLancamento($request->user_id);
+        return response()->json([
+            "response"=>'Cadastrado com sucesso'
+        ], 200);
     }
 
     public function getLancamentos(Lancamento $lancamento, Request $request){
