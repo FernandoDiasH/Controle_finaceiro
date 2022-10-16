@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('config_cartao', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuario');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('banco_id')->constrained('banco');
             $table->string('descricao');
             $table->integer('dia_vencimento');

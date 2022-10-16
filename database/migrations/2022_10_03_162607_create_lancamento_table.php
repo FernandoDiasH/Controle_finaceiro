@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('lancamento', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuario');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('operacao_id')->constrained('operacao');
             $table->date('dta_lancamento');
             $table->string('descricao', 50);

@@ -17,7 +17,7 @@ class RegistroParcelasSeeder extends Seeder
     {
         for($i = 0; $i < 2; $i++){
             RegistroParcela::create([
-                "usuario_id"=> '1',
+                "user_id"=> '1',
                 "lancamento_credito_id" => "1",
                 "dta_vencimento" => '2022-'. 10 + $i."-18",
                 "valor_parcela" => '500',

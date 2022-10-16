@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\ConfigCartaoController;
+use App\Http\Controllers\LancamentoController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OperacaoController;
+use App\Http\Controllers\UserController;
+use App\Models\Lancamento;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
-});
+})->name('welcome');
+
+
+
+
+

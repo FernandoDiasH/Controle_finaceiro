@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Usuario;
+use App\Models\User;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UsuarioSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,18 +16,18 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        Usuario::create([
+        User::create([
             "nome_usuario" => "adm",
             "nome" => "adm",
             "email" => "adm@hotmail.com",
-            "senha" => "1234"
+            "password" => "1234"
         ]);
 
-        Usuario::create([
+        User::create([
             "nome_usuario" => "fernando",
             "nome" => "fernando",
             "email" => "fernando@hotmail.com",
-            "senha" => "1234"
+            "password" => "1234"
         ]);
     }
 }
