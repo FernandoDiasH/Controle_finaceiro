@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LancamentoController;
+use App\Http\Controllers\LancamentoCreditoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OperacaoController;
 use App\Http\Controllers\UserController;
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::post('/lancamento', [LancamentoController::class, 'createLancamento'])->name('lancamento');
         Route::post('/banco', [BancoController::class, 'store'])->name('banco');
         Route::post('/configCartao', [ConfigCartaoController::class, 'store'])->name('config.cartao');
+        Route::post('/lancamentoCredito', [LancamentoCreditoController::class, 'store'])->name('lancaentoCredito');
     });
     Route::prefix('buscar')->group(function (){
         Route::controller(LancamentoController::class)->group(function(){

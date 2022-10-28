@@ -12,10 +12,11 @@ class LancamentoCredito extends Model
     protected $table = "lancamento_credito";
 
     protected $fillable = [
+        'user_id',
+        'config_cartao_id',
         'dta_compra',
         'descricao',
         'valor',
         'parcelas',
-
     ];
 }
