@@ -13,7 +13,7 @@ class LancamentoController extends Controller
 {
     public function createLancamento(LancamentoRequest $request, Lancamento $lancamento){
 
-        $lancamento->createLancamento($request->user_id);
+        $lancamento->createLancamento($request->all());
         return response()->json([
             "response"=>'Cadastrado com sucesso'
         ], 200);
