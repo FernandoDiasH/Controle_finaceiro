@@ -5,6 +5,9 @@ use App\Http\Controllers\LancamentoCreditoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OperacaoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConfigCartaoController;
+use App\Http\Controllers\CreditoController;
+use App\Http\Controllers\TesteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +43,17 @@ Route::middleware('auth:sanctum')->group(function (){
             Route::post('operacao', 'getOperacao')->name('operacao');
             Route::post('operacao/{id}', 'getOperacaoID')->name('operacaoID');
         });
+        Route::controller(LancamentoCreditoController::class)->group(function(){
+            Route::get('lancamento_credito', 'getLancamentoCredito')->name('lancamento_credito');
+        });
+        Route::controller(ConfigCartaoController::class)->group(function(){
+            Route::get('config-cartao', 'getConfigCartao')->name('config_cartao');
+        });
+        Route::controller(CreditoController::class)->group(function(){
+            Route::post('parcelas', 'getParcelas')->name('parcelas');
+        });
+
+
     });
     Route::prefix('delete')->group(function(){
         Route::controller(LancamentoController::class)->group(function(){
@@ -58,3 +72,14 @@ Route::middleware('auth:sanctum')->group(function (){
 
 Route::post('cadastrar/user', [UserController::class, 'store'])->name('store.user');
 Route::post('login', [LoginController::class, 'login'])->name('login.user');
+
+Route::get('teste/', [TesteController::class, 'teste']);
+Route::post('create/user', [TesteController::class, 'createUser']);
+Route::get('delete/user/{id}', [TesteController::class, 'deleteUser']);
+
+Route::get('buscar/user/{id}', [TesteController::class, 'getUser']);
+
+Route::controller(TesteController::class)->group(function(){
+    Route::get('buscar/lancamentos/{id}', 'listLancamentos');
+});
+
